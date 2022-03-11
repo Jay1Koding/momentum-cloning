@@ -203,3 +203,24 @@ window.addEventListener('contextmenu', superEventHandler.handleContextMenu);
 // remove event를 할 수 없어 아래는 잘 안 쓰도록 하자
 window.contextmenu = superEventHandler.handleContextMenu;
 ```
+
+## CSS in javascript
+
+```javascript
+'use strict';
+
+const h1 = document.querySelector('h1');
+
+function handleOnClick() {
+  const currentColor = h1.style.color;
+  let newColor = h1.style.color;
+  if (currentColor === 'blue') {
+    newColor = 'tomato';
+  } else {
+    newColor = 'blue';
+  }
+  h1.style.color = newColor;
+}
+
+h1.addEventListener('click', handleOnClick);
+```
