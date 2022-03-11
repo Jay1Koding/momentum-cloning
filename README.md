@@ -224,3 +224,33 @@ function handleOnClick() {
 
 h1.addEventListener('click', handleOnClick);
 ```
+
+```javascript
+'use strict';
+
+const h1 = document.querySelector('h1');
+
+function handleOnClick() {
+  const clickedClass = 'active';
+  if (h1.className === clickedClass) {
+    h1.className = '';
+  } else {
+    h1.className = clickedClass;
+  }
+}
+
+h1.addEventListener('click', handleOnClick);
+// but this way just update the class it exist or not
+```
+
+```javascript
+function handleOnClick() {
+  const clickedClass = 'active';
+  if (h1.classList.contains(clickedClass)) {
+    h1.classList.remove(clickedClass);
+  } else {
+    h1.classList.add(clickedClass);
+  }
+}
+// this is solution
+```
