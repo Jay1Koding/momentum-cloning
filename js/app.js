@@ -1,9 +1,29 @@
 'use strict';
 
-const h1 = document.querySelector('h1');
+const loginForm = document.querySelector('#login-form');
+const loginInput = document.querySelector('input');
+const greeting = document.querySelector('#greeting');
+const HIDDEN_CLASSNAME = 'hidden';
+const USERNAME_KEY = 'username';
 
-function handleOnClick() {
-  h1.classList.toggle('active');
+const onLoginSubmit = (event) => {
+  event.preventDefault();
+  const username = loginInput.value;
+  localStorage.setItem(USERNAME_KEY, username);
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  paintGreeting(username);
+};
+
+function paintGreeting(username) {
+  greeting.innerText = `hello ${username}`;
+  greeting.classList.remove(HIDDEN_CLASSNAME);
 }
 
-h1.addEventListener('click', handleOnClick);
+const savedUserName = localStorage.getItem(USERNAME_KEY);
+
+if (savedUserName === null) {
+  loginForm.classList.remove(HIDDEN_CLASSNAME);
+  loginForm.addEventListener('submit', onLoginSubmit);
+} else {
+  paintGreeting(savedUserName);
+}

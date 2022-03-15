@@ -254,3 +254,51 @@ function handleOnClick() {
 }
 // this is solution
 ```
+
+```javascript
+'use strict';
+const browser = document.body;
+
+function resizeBrowser() {
+  const browserWidth = window.innerWidth;
+  const blue = 'blue';
+  const yellow = 'yellow';
+  const purple = 'purple';
+
+  if (browserWidth > 900) {
+    browser.classList.add(blue);
+    // browser.classList.remove(purple);
+    browser.classList.remove(yellow, purple);
+  } else if (browserWidth < 600) {
+    browser.classList.add(yellow);
+    // browser.classList.remove(blue);
+    browser.classList.remove(purple, blue);
+  } else {
+    browser.classList.add(purple);
+    browser.classList.remove(yellow, blue);
+    // browser.classList.remove(blue);
+  }
+}
+
+window.addEventListener('resize', resizeBrowser);
+```
+
+```javascript
+'use strict';
+
+const loginForm = document.querySelector('#login-form');
+const loginInput = document.querySelector('input');
+const greeting = document.querySelector('#greeting');
+
+const onLoginSubmit = (event) => {
+  const username = loginInput.value;
+  event.preventDefault();
+  console.log('submit', username);
+  // loginForm.innerHTML = '';
+  loginForm.classList.add('hidden');
+  greeting.innerHTML = `hello ${username}`;
+  greeting.classList.remove('hidden');
+};
+
+loginForm.addEventListener('submit', onLoginSubmit);
+```
