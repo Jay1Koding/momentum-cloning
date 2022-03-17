@@ -1,5 +1,3 @@
-'use strict';
-
 const loginForm = document.querySelector('#login-form');
 const loginInput = document.querySelector('input');
 const greeting = document.querySelector('#greeting');
